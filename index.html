@@ -78,8 +78,7 @@
     <script>
         function redirectToWhatsApp() {
             const phoneNumber = document.getElementById('phoneNumber').value;
-            const prefilledMessage = encodeURIComponent("Hi [Name], it’s [Your Name] — we spoke briefly about getting a website for [Gym Name].\n\nAs promised, here’s a quick preview of what your new site could look like: [link or image]\nIt includes:\n✅ Class booking\n✅ Trial sign-up\n✅ Google search optimization\n\nThis would make it much easier for people to find and join your gym.\nDo you want me to customize this fully for you?");
-            
+            const prefilledMessage = encodeURIComponent("...")
             if (phoneNumber) {
                 window.location.href = `https://wa.me/${phoneNumber}?text=${prefilledMessage}`;
             } else {
