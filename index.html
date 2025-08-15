@@ -45,15 +45,47 @@
         .whatsapp-button:hover {
             background-color: #218838;
         }
+        .input-group {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .input-group input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .note {
+            font-size: 0.9em;
+            color: #666;
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Connect with us on WhatsApp!</h1>
-        <p>Click the button below to open a pre-filled WhatsApp message and get a quick preview of what your new gym website could look like.</p>
-        <a href="https://wa.me/254798808105?text=Hi%20%5BName%5D%2C%20it%E2%80%99s%20%5BYour%20Name%5D%20%E2%80%94%20we%20spoke%20briefly%20about%20getting%20a%20website%20for%20%5BGym%20Name%5D.%0A%0AAs%20promised%2C%20here%E2%80%99s%20a%20quick%20preview%20of%20what%20your%20new%20site%20could%20look%20like%3A%20%5Blink%20or%20image%5D%0AIt%20includes%3A%0A%E2%9C%85%20Class%20booking%0A%E2%9C%85%20Trial%20sign-up%0A%E2%9C%85%20Google%20search%20optimization%0A%0AThis%20would%20make%20it%20much%20easier%20for%20people%20to%20find%20and%20join%20your%20gym.%0ADo%20you%20want%20me%20to%20customize%20this%20fully%20for%20you%3F" class="whatsapp-button">
-            Open WhatsApp Chat
-        </a>
+        <p>Enter the phone number below to open a direct WhatsApp chat with our pre-filled outreach message.</p>
+        <div class="input-group">
+            <input type="tel" id="phoneNumber" placeholder="e.g., 254712345678" pattern="[0-9]{10,15}" title="Please enter a valid phone number (10-15 digits)" required>
+            <button class="whatsapp-button" onclick="redirectToWhatsApp()">Open WhatsApp Chat</button>
+        </div>
+        <p class="note">Please ensure the number includes the country code (e.g., 254 for Kenya).</p>
     </div>
+
+    <script>
+        function redirectToWhatsApp() {
+            const phoneNumber = document.getElementById('phoneNumber').value;
+            const prefilledMessage = encodeURIComponent("Hi [Name], it’s [Your Name] — we spoke briefly about getting a website for [Gym Name].\n\nAs promised, here’s a quick preview of what your new site could look like: [link or image]\nIt includes:\n✅ Class booking\n✅ Trial sign-up\n✅ Google search optimization\n\nThis would make it much easier for people to find and join your gym.\nDo you want me to customize this fully for you?");
+            
+            if (phoneNumber) {
+                window.location.href = `https://wa.me/${phoneNumber}?text=${prefilledMessage}`;
+            } else {
+                alert("Please enter a phone number.");
+            }
+        }
+    </script>
 </body>
 </html>
